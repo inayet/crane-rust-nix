@@ -178,10 +178,10 @@ upfrefresh:
 upflock:
 	@nix flake lock
 
-[group("Nix Flake")]
-upflock-dir:
-	# Update nix-ld-dir flake.lock
-	cd nix-ld-dir && nix flake lock
+# [group("Nix Flake")]
+# upflock-dir:
+# 	# Update nix-ld-dir flake.lock
+# 	cd nix-ld-dir && nix flake lock
 
 [group("Nix Flake")]
 upuinput:
@@ -228,20 +228,29 @@ view-log:
 [group("NixOS")]
 gr message="":
 	#!/usr/bin/env bash
+	# Commit with message or open editor
+	if [ -z "{{message}}" ]; then
+		git commit
+	else
+		git add .
+		git commit -m "{{message}}"
+		#git commit -m "{{message}}"
+	fi
 	# Format and commit any pending changes
-	if ! just gact "{{message}}"; then
+	if ! just gact; then
 		echo "Failed to format and commit changes" >&2
 		exit 1
 	fi
-	# Update flake locks
-	if ! just upflock-dir; then
-		echo "Failed to update nix-ld-dir flake lock" >&2
-		exit 1
-	fi
+	# # Update flake locks
+	# if ! just upflock-dir; then
+	# 	echo "Failed to update nix-ld-dir flake lock" >&2
+	# 	exit 1
+	# fi
 	if ! just upfrefresh; then
 		echo "Failed to update flake inputs" >&2
 		exit 1
 	fi
+	# add check that if files chanaged as result of previous command then add git add.
 	# Rebuild the system
 	just rebuild
 
