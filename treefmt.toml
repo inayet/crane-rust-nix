@@ -1,0 +1,62 @@
+[formatter.nixfmt]
+command = "nixfmt"
+includes = ["*.nix"]
+excludes = ["**/.direnv", "**/.bak", "**secrets/*", "nix-index/*"]
+
+[formatter.shfmt]
+command = "shfmt"
+excludes = []
+includes = ["*.sh", "*.bash", "*.envrc", "*.envrc.*"]
+options = ["-s", "-w", "-i", "2"]
+
+[formatter.toml-sort]
+command = "toml-sort"
+excludes = ["**/.direnv", "**/.bak", "**secrets/*", "nix-index/*"]
+includes = ["*.toml"]
+options = ["-i"]
+
+[global]
+excludes = [
+  "**.lock",
+  "flake.lock",
+  "**/.gitignore",
+  "**/.gitmodules",
+  ".gitignore",
+  ".gitmodules",
+  "LICENSE",
+  # "systems/discovery/firmware/*",
+  "secrets",
+  # "assets/wallpapers",
+  "secrets/*",
+  "*.bk",
+  "*.pdf",
+  "*.bak",
+  "*.text",
+  "*.txt",
+  "*.ini",
+  "*.png",
+  "*.jpg",
+  "*.md",
+  "*.mp3",
+  "*.icon",
+  # "home-manager/programs/files/*",
+  "*.diff",
+  "*.svg",
+  "**/lazy-lock.json",
+  "*.conf",
+  "*.rasi",
+  "*.css",
+  # "*.json",
+  # "home-manager/programs/nwg-dock-hyprland/nwg-dock-pinned",
+  # "home-manager/programs/direnv/direnvrc",
+  ".sops.yaml",
+  "facter.json",
+  "my-nix-index/ad-hoc-download-nix-index-db.sh",
+  "sops-nix-secrets/sops-nix-networks.nix",
+  ".direnv/*",
+  "flake-parts-structure",
+  "*.bkup",
+  "*.envrc",
+  "*justfile",
+  "*.vscode/*"
+]
