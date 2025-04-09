@@ -226,10 +226,10 @@ view-log:
 
 [doc("Refresh flake inputs, commit changes, and rebuild system")]
 [group("NixOS")]
-gr:
+gr message="":
 	#!/usr/bin/env bash
 	# Format and commit any pending changes
-	if ! just gact "refactor(dev): improve type safety and validation - Add comprehensive type checking for flake outputs - Create mkTest helper for consistent test derivations - Enhance error tracking and analysis - Add proactive validation checks"; then
+	if ! just gact "{{message}}"; then
 		echo "Failed to format and commit changes" >&2
 		exit 1
 	fi
