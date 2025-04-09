@@ -252,7 +252,7 @@ gr message="":
 	fi
 	# add check that if files chanaged as result of previous command then add git add.
 	# Rebuild the system
-	@nix develop
+	nix develop
 
 [group("Nix Packages")]
 locate pkg:
