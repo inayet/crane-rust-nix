@@ -2,7 +2,8 @@
   description = "Build a cargo project";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    #nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable-small";
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
     crane.url = "github:ipetkov/crane";
 
